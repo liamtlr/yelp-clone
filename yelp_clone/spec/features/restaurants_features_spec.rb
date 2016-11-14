@@ -48,11 +48,23 @@ feature 'restaurants' do
 			visit '/restaurants'
 			click_link 'Add a restaurant'
 			fill_in :name, with: "Illegal Burger"
-			#desc = "Oslo's best burger joint ever!"
 			fill_in :description, with: "Oslo's best burger joint ever!"
 			click_button 'Add Restaurant'
 			click_link 'Illegal Burger'
 			expect(page).to have_content "Oslo's best burger joint ever!"
+		end
+	end
+
+	context 'editing a restaurant' do
+		let!(:trat){Restaurant.create(name: 'Tratoria Populare')}
+		scenario 'lets user edit restuarant' do
+			visit '/restaurants'
+			click_link 'Tratoria Populare'
+			click_link 'edit'
+			fill_in :name, with: 'trat'
+			click_button 'Update Restaurant'
+			expect(page).to have_content 'trat'
+			expect(page).not_to have_content 'Tratoria Populare'
 		end
 	end
 end
