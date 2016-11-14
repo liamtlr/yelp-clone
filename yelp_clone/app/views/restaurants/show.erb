@@ -1,2 +1,4 @@
-<%= @restaurant.name %>
-<%= @restaurant.description %>
+<h1><%= @restaurant.name %></h1>
+<p><%= @restaurant.description %></p>
+<p><%= @restaurant.rating %>/5</p>
+<%= link_to "edit", edit_restaurant_url(@restaurant.id) %>

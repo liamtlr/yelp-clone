@@ -67,4 +67,19 @@ feature 'restaurants' do
 			expect(page).not_to have_content 'Tratoria Populare'
 		end
 	end
+
+		context 'user add rating to restaurant' do
+		scenario 'user adds a new restaurant and description' do
+			visit '/restaurants'
+			click_link 'Add a restaurant'
+			fill_in :name, with: "Pete's Wok"
+			fill_in :description, with: "Best Wok in the UK!"
+			fill_in :rating, with: 5
+			click_button 'Add Restaurant'
+			expect(page).to have_content "Pete's Wok 5/5"
+			click_link "Pete's Wok"
+			expect(page).to have_content "Rating: 5/5"
+		end
+	end
+
 end
