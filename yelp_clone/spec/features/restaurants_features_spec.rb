@@ -42,4 +42,17 @@ feature 'restaurants' do
 			expect(current_path).to eq "/restaurants/#{trat.id}"
 		end
 	end
+
+	context 'user add description to restaurant' do
+		scenario 'user adds a new restaurant and description' do
+			visit '/restaurants'
+			click_link 'Add a restaurant'
+			fill_in :name, with: "Illegal Burger"
+			#desc = "Oslo's best burger joint ever!"
+			fill_in :description, with: "Oslo's best burger joint ever!"
+			click_button 'Add Restaurant'
+			click_link 'Illegal Burger'
+			expect(page).to have_content "Oslo's best burger joint ever!"
+		end
+	end
 end

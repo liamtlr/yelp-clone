@@ -1,5 +1,7 @@
 <%= form_for @restaurant, url:{action: "create"} do |f| %>
   <%= f.label :name, 'Restaurant name: '%>
   <%= f.text_field :name %>
+  <%= f.label :description, 'Restaurant description: '%>
+  <%= f.text_area :description %>
   <%= f.submit 'Add Restaurant' %>
 <% end %>
