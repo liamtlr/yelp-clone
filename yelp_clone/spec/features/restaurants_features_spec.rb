@@ -20,4 +20,15 @@ feature 'restaurants' do
 			expect(page).not_to have_content 'No restaurants yet'
 		end
 	end
+
+	context 'adding a restaurant' do 
+		scenario 'user adds a new restaurant and the restaurant is displayed on the page' do
+			visit '/restaurants'
+			click_link 'Add a restaurant'
+			fill_in :name, with: "McDonald's"
+			click_button 'Add Restaurant'
+			expect(page).to have_content "McDonald's"
+			expect(current_path).to eq '/restaurants'
+		end
+	end
 end
