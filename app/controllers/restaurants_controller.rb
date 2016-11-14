@@ -15,6 +15,10 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
+    @first_bit = @reviews.sum(:rating)
+    @second_bit = @reviews.count
+    @average_score = @reviews.sum(:rating) / @reviews.count.to_f
+    @average_score_rounded = @average_score.round(1)
   end
 
   def edit

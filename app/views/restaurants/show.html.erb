@@ -2,13 +2,13 @@
 <h3> Description </h3>
 <p> <%= @restaurant.description %> </p>
 <h3> Reviews </h3>
-<!-- <h4> Overall rating: </h4> -->
+<h4> Overall rating: <%= @average_score_rounded %>/5</h4>
 
 <ul>
   <% @reviews.each do |review| %>
     <li>
       <%= review.thoughts %></br>
-      Rating: <%= review.rating %>
+      Rating: <%= review.rating %>/5
     </li>
   <% end %>
 </ul>
