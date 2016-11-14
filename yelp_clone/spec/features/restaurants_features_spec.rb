@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'restaurants' do
+
 	context 'no restaurants have been added ' do
 		scenario 'should display a ' do
 			visit '/restaurants'
@@ -29,6 +30,16 @@ feature 'restaurants' do
 			click_button 'Add Restaurant'
 			expect(page).to have_content "McDonald's"
 			expect(current_path).to eq '/restaurants'
+		end
+	end
+
+	context 'displaying an individual restaurant' do
+		let!(:trat){Restaurant.create(name: 'Tratoria Populare')}
+		scenario 'lets the user view a restaurant' do
+			visit '/restaurants'
+			click_link 'Tratoria Populare'
+			expect(page).to have_content 'Tratoria Populare'
+			expect(current_path).to eq "/restaurants/#{trat.id}"
 		end
 	end
 end
