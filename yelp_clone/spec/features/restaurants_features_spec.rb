@@ -56,7 +56,7 @@ feature 'restaurants' do
 		scenario 'lets user edit restuarant' do
 			visit '/restaurants'
 			click_link 'Tratoria Populare'
-			click_link 'edit'
+			click_link 'Edit'
 			fill_in :name, with: 'trat'
 			click_button 'Update Restaurant'
 			expect(page).to have_content 'trat'
@@ -74,7 +74,10 @@ feature 'restaurants' do
 
 	context 'deleting a restaurant' do
 		scenario 'user deletes a restaurant' do 
-
+			visit_my_restaurant
+			click_link 'Delete'
+			expect(page).not_to have_content 'My restaurant'
+			expect(page).to have_content 'My restaurant has been deleted'
 		end
 	end
 end

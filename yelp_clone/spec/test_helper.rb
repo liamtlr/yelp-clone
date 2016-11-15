@@ -6,3 +6,8 @@ def add_restaurant_and_return
   fill_in :rating, with: 5
   click_button 'Add Restaurant'
 end
+
+def visit_my_restaurant
+  add_restaurant_and_return
+  click_link 'My restaurant'
+end
