@@ -22,7 +22,7 @@ feature 'restaurants' do
 		end
 	end
 
-	context 'adding a restaurant' do 
+	context 'adding a restaurant' do
 		scenario 'user adds a new restaurant and the restaurant is displayed on the page' do
 			visit '/restaurants'
 			click_link 'Add a restaurant'
@@ -73,10 +73,9 @@ feature 'restaurants' do
 	end
 
 	context 'deleting a restaurant' do
-		scenario 'user deletes a restaurant' do 
+		scenario 'user deletes a restaurant' do
 			visit_my_restaurant
 			click_link 'Delete'
-			expect(page).not_to have_content 'My restaurant'
 			expect(page).to have_content 'My restaurant has been deleted'
 		end
 	end
