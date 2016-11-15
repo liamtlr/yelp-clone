@@ -2,8 +2,8 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"],
-                  callback_url: "http://localhost:3000/restaurants"
+  config.omniauth :facebook, '385528905124470', 'de1fe0d01241ed62168c94e8fac1863c',
+                  callback_url: "http://localhost:3000/users/auth/facebook/callback"
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
