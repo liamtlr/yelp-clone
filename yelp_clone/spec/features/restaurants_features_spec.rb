@@ -45,13 +45,9 @@ feature 'restaurants' do
 
 	context 'user add description to restaurant' do
 		scenario 'user adds a new restaurant and description' do
-			visit '/restaurants'
-			click_link 'Add a restaurant'
-			fill_in :name, with: "Illegal Burger"
-			fill_in :description, with: "Oslo's best burger joint ever!"
-			click_button 'Add Restaurant'
-			click_link 'Illegal Burger'
-			expect(page).to have_content "Oslo's best burger joint ever!"
+			add_restaurant_and_return
+			click_link 'My restaurant'
+			expect(page).to have_content 'A great place to eat'
 		end
 	end
 
@@ -68,18 +64,17 @@ feature 'restaurants' do
 		end
 	end
 
-		context 'user add rating to restaurant' do
+	context 'adding rating to restaurant' do
 		scenario 'user adds a new restaurant and description' do
-			visit '/restaurants'
-			click_link 'Add a restaurant'
-			fill_in :name, with: "Pete's Wok"
-			fill_in :description, with: "Best Wok in the UK!"
-			fill_in :rating, with: 5
-			click_button 'Add Restaurant'
-			expect(page).to have_content "Pete's Wok 5/5"
-			click_link "Pete's Wok"
+			add_restaurant_and_return
+			click_link 'My restaurant'
 			expect(page).to have_content "Rating: 5/5"
 		end
 	end
 
+	context 'deleting a restaurant' do
+		scenario 'user deletes a restaurant' do 
+
+		end
+	end
 end
