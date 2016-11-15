@@ -4,6 +4,7 @@ feature "Reviews" do
 
   scenario "Leave a review" do
     visit_my_restaurant
+    click_link "Review"
     fill_in "comments", with: "Pretty average place. Needs improvement"
     fill_in "rating", with: "2"
     click_button "Review"
