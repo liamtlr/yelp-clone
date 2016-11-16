@@ -9,9 +9,11 @@
   </head>
 
   <body>
-    <%= render 'user_header' %>
-    <%= flash[:notice] %>
-    <%= alert %>
-    <%= yield %>
+    <header>
+      <%= render 'header' %>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
