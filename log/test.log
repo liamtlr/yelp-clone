@@ -14692,3 +14692,2458 @@ Completed 200 OK in 38ms (Views: 30.1ms | ActiveRecord: 1.4ms)
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (20.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6520301555206334700);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20161116103120)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (98.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (16.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (19.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161116103120"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6520301555206334700)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'restaurants'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reviews'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:53 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (26.7ms)
+Completed 200 OK in 750ms (Views: 699.4ms | ActiveRecord: 2.0ms)
+  [1m[35m (6.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (37.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (23.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:11:54 UTC], ["updated_at", 2016-11-16 11:11:54 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:54 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (15.4ms)
+Completed 200 OK in 43ms (Views: 38.6ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:55 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (14.0ms)
+Completed 200 OK in 197ms (Views: 185.9ms | ActiveRecord: 7.9ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:11:55 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (35.8ms)
+Completed 200 OK in 66ms (Views: 60.3ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:55 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"McDonald's", "description"=>""}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "McDonald's"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "McDonald's"], ["description", ""], ["created_at", 2016-11-16 11:11:55 UTC], ["updated_at", 2016-11-16 11:11:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 14ms (ActiveRecord: 1.6ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:55 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.7ms)
+Completed 200 OK in 44ms (Views: 40.0ms | ActiveRecord: 1.2ms)
+  [1m[35m (3.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:11:55 UTC], ["updated_at", 2016-11-16 11:11:55 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:55 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (16.2ms)
+Completed 200 OK in 60ms (Views: 45.0ms | ActiveRecord: 1.2ms)
+Started GET "/restaurants/113" for 127.0.0.1 at 2016-11-16 11:11:55 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"113"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 113]]
+  Rendered restaurants/show.erb within layouts/application (4.2ms)
+Completed 200 OK in 336ms (Views: 22.8ms | ActiveRecord: 3.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:55 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.6ms)
+Completed 200 OK in 31ms (Views: 24.8ms | ActiveRecord: 0.3ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (6.5ms)
+Completed 200 OK in 59ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:11:56 UTC], ["updated_at", 2016-11-16 11:11:56 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 30ms (ActiveRecord: 1.7ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (12.1ms)
+Completed 200 OK in 34ms (Views: 23.4ms | ActiveRecord: 0.9ms)
+Started GET "/restaurants/114" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"114"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 114]]
+  Rendered restaurants/show.erb within layouts/application (3.6ms)
+Completed 200 OK in 42ms (Views: 35.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:11:56 UTC], ["updated_at", 2016-11-16 11:11:56 UTC]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.0ms)
+Completed 200 OK in 67ms (Views: 62.3ms | ActiveRecord: 1.4ms)
+Started GET "/restaurants/115" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"115"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 115]]
+  Rendered restaurants/show.erb within layouts/application (3.4ms)
+Completed 200 OK in 79ms (Views: 30.4ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/115/edit" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"115"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  Rendering restaurants/edit.erb within layouts/application
+  Rendered restaurants/edit.erb within layouts/application (6.0ms)
+Completed 200 OK in 38ms (Views: 30.8ms | ActiveRecord: 0.4ms)
+Started PATCH "/restaurants/115" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#update as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"trat", "description"=>"", "rating"=>""}, "commit"=>"Update Restaurant", "id"=>"115"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 AND ("restaurants"."id" != $2) LIMIT $3[0m  [["name", "trat"], ["id", 115], ["LIMIT", 1]]
+  [1m[35mSQL (25.5ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "description" = $2, "updated_at" = $3 WHERE "restaurants"."id" = $4[0m  [["name", "trat"], ["description", ""], ["updated_at", 2016-11-16 11:11:56 UTC], ["id", 115]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 47ms (ActiveRecord: 27.4ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.2ms)
+Completed 200 OK in 46ms (Views: 41.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.6ms)
+Completed 200 OK in 47ms (Views: 40.6ms | ActiveRecord: 0.5ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (4.9ms)
+Completed 200 OK in 37ms (Views: 27.2ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (11.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:11:56 UTC], ["updated_at", 2016-11-16 11:11:56 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 28ms (ActiveRecord: 12.6ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.7ms)
+Completed 200 OK in 65ms (Views: 61.6ms | ActiveRecord: 0.5ms)
+Started GET "/restaurants/116" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"116"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 116]]
+  Rendered restaurants/show.erb within layouts/application (20.2ms)
+Completed 200 OK in 80ms (Views: 61.9ms | ActiveRecord: 1.3ms)
+Started DELETE "/restaurants/116" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"id"=>"116"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 116]]
+  [1m[35mSQL (11.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 116]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 24ms (ActiveRecord: 12.1ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:56 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (17.2ms)
+Completed 200 OK in 90ms (Views: 66.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (11.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.3ms)
+Completed 200 OK in 59ms (Views: 47.5ms | ActiveRecord: 2.5ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (21.6ms)
+Completed 200 OK in 55ms (Views: 48.9ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:11:57 UTC], ["updated_at", 2016-11-16 11:11:57 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 13ms (ActiveRecord: 3.6ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (14.1ms)
+Completed 200 OK in 44ms (Views: 37.2ms | ActiveRecord: 0.9ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.5ms)
+Completed 200 OK in 38ms (Views: 30.8ms | ActiveRecord: 3.1ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (10.4ms)
+Completed 200 OK in 34ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35m (6.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (8.3ms)
+Completed 200 OK in 86ms (Views: 28.8ms | ActiveRecord: 6.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.6ms)
+Completed 200 OK in 49ms (Views: 31.7ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (4.2ms)
+Completed 200 OK in 35ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:11:57 UTC], ["updated_at", 2016-11-16 11:11:57 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.2ms)
+Completed 200 OK in 31ms (Views: 16.6ms | ActiveRecord: 1.3ms)
+Started GET "/restaurants/118" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"118"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 118]]
+  Rendered restaurants/show.erb within layouts/application (2.8ms)
+Completed 200 OK in 34ms (Views: 27.9ms | ActiveRecord: 0.6ms)
+Started GET "/restaurants/118/reviews/new" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"118"}
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  Rendering reviews/new.erb within layouts/application
+  Rendered reviews/new.erb within layouts/application (14.5ms)
+Completed 200 OK in 74ms (Views: 52.3ms | ActiveRecord: 2.4ms)
+Started POST "/restaurants/118/reviews" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"comments"=>"Pretty average place. Needs improvement", "rating"=>"2"}, "commit"=>"Review", "restaurant_id"=>"118"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (10.6ms)[0m  [1m[32mINSERT INTO "reviews" ("comments", "rating", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comments", "Pretty average place. Needs improvement"], ["rating", 2], ["restaurant_id", 118], ["created_at", 2016-11-16 11:11:57 UTC], ["updated_at", 2016-11-16 11:11:57 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants/118
+Completed 302 Found in 37ms (ActiveRecord: 11.4ms)
+Started GET "/restaurants/118" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"118"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 118]]
+  Rendered restaurants/show.erb within layouts/application (7.2ms)
+Completed 200 OK in 36ms (Views: 31.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:11:57 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (45.3ms)
+Completed 200 OK in 67ms (Views: 61.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (4.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "a restaurant"], ["created_at", 2016-11-16 11:11:58 UTC], ["updated_at", 2016-11-16 11:11:58 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (14.9ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (12.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:12 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (41.9ms)
+Completed 200 OK in 605ms (Views: 572.8ms | ActiveRecord: 2.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:13:13 UTC], ["updated_at", 2016-11-16 11:13:13 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.1ms)
+Completed 200 OK in 21ms (Views: 16.0ms | ActiveRecord: 2.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (11.1ms)
+Completed 200 OK in 91ms (Views: 86.8ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (31.3ms)
+Completed 200 OK in 51ms (Views: 41.7ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"McDonald's", "description"=>""}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "McDonald's"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "McDonald's"], ["description", ""], ["created_at", 2016-11-16 11:13:13 UTC], ["updated_at", 2016-11-16 11:13:13 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 13ms (ActiveRecord: 1.4ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.4ms)
+Completed 200 OK in 23ms (Views: 19.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (4.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:13:13 UTC], ["updated_at", 2016-11-16 11:13:13 UTC]]
+  [1m[35m (1.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (12.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (26.2ms)
+Completed 200 OK in 77ms (Views: 59.7ms | ActiveRecord: 13.2ms)
+Started GET "/restaurants/122" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"122"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 122], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 122]]
+  Rendered restaurants/show.erb within layouts/application (3.7ms)
+Completed 200 OK in 171ms (Views: 22.9ms | ActiveRecord: 2.8ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (7.3ms)
+Completed 200 OK in 28ms (Views: 22.5ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (3.6ms)
+Completed 200 OK in 67ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:13:13 UTC], ["updated_at", 2016-11-16 11:13:13 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 6ms (ActiveRecord: 1.2ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.2ms)
+Completed 200 OK in 26ms (Views: 21.2ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/123" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"123"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 123], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 123]]
+  Rendered restaurants/show.erb within layouts/application (13.3ms)
+Completed 200 OK in 41ms (Views: 26.8ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:13:13 UTC], ["updated_at", 2016-11-16 11:13:13 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:13 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (10.2ms)
+Completed 200 OK in 33ms (Views: 27.3ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/124" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"124"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 124], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 124]]
+  Rendered restaurants/show.erb within layouts/application (3.4ms)
+Completed 200 OK in 26ms (Views: 17.6ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/124/edit" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"124"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 124], ["LIMIT", 1]]
+  Rendering restaurants/edit.erb within layouts/application
+  Rendered restaurants/edit.erb within layouts/application (4.5ms)
+Completed 200 OK in 39ms (Views: 18.4ms | ActiveRecord: 0.5ms)
+Started PATCH "/restaurants/124" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#update as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"trat", "description"=>"", "rating"=>""}, "commit"=>"Update Restaurant", "id"=>"124"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 124], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 AND ("restaurants"."id" != $2) LIMIT $3[0m  [["name", "trat"], ["id", 124], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "description" = $2, "updated_at" = $3 WHERE "restaurants"."id" = $4[0m  [["name", "trat"], ["description", ""], ["updated_at", 2016-11-16 11:13:14 UTC], ["id", 124]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 18ms (ActiveRecord: 3.6ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.2ms)
+Completed 200 OK in 22ms (Views: 18.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (5.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.2ms)
+Completed 200 OK in 67ms (Views: 58.9ms | ActiveRecord: 0.5ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (6.2ms)
+Completed 200 OK in 32ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:13:14 UTC], ["updated_at", 2016-11-16 11:13:14 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 9ms (ActiveRecord: 1.6ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (5.4ms)
+Completed 200 OK in 23ms (Views: 18.2ms | ActiveRecord: 0.6ms)
+Started GET "/restaurants/125" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"125"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 125], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 125]]
+  Rendered restaurants/show.erb within layouts/application (22.9ms)
+Completed 200 OK in 70ms (Views: 58.8ms | ActiveRecord: 0.9ms)
+Started DELETE "/restaurants/125" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"id"=>"125"}
+  [1m[36mRestaurant Load (1.1ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 125], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 125]]
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 125]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 11ms (ActiveRecord: 2.7ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (37.2ms)
+Completed 200 OK in 82ms (Views: 75.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.6ms)
+Completed 200 OK in 33ms (Views: 28.4ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (4.6ms)
+Completed 200 OK in 53ms (Views: 49.0ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:13:14 UTC], ["updated_at", 2016-11-16 11:13:14 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 12ms (ActiveRecord: 1.2ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.7ms)
+Completed 200 OK in 27ms (Views: 21.6ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.9ms)
+Completed 200 OK in 17ms (Views: 13.9ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (5.9ms)
+Completed 200 OK in 24ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (2.8ms)
+Completed 200 OK in 52ms (Views: 17.1ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.4ms)
+Completed 200 OK in 42ms (Views: 31.8ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:13:14 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (7.9ms)
+Completed 200 OK in 48ms (Views: 28.8ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:15 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:13:15 UTC], ["updated_at", 2016-11-16 11:13:15 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:13:15 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.9ms)
+Completed 200 OK in 29ms (Views: 25.0ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/127" for 127.0.0.1 at 2016-11-16 11:13:15 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"127"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 127], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 127]]
+  Rendered restaurants/show.erb within layouts/application (5.6ms)
+Completed 200 OK in 23ms (Views: 18.5ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/127/reviews/new" for 127.0.0.1 at 2016-11-16 11:13:15 +0000
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"127"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 127], ["LIMIT", 1]]
+  Rendering reviews/new.erb within layouts/application
+  Rendered reviews/new.erb within layouts/application (5.1ms)
+Completed 200 OK in 47ms (Views: 33.5ms | ActiveRecord: 2.1ms)
+Started POST "/restaurants/127/reviews" for 127.0.0.1 at 2016-11-16 11:13:15 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"comments"=>"Pretty average place. Needs improvement", "rating"=>"2"}, "commit"=>"Review", "restaurant_id"=>"127"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 127], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (8.4ms)[0m  [1m[32mINSERT INTO "reviews" ("comments", "rating", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comments", "Pretty average place. Needs improvement"], ["rating", 2], ["restaurant_id", 127], ["created_at", 2016-11-16 11:13:15 UTC], ["updated_at", 2016-11-16 11:13:15 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants/127
+Completed 302 Found in 23ms (ActiveRecord: 9.0ms)
+Started GET "/restaurants/127" for 127.0.0.1 at 2016-11-16 11:13:15 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"127"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 127], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 127]]
+  Rendered restaurants/show.erb within layouts/application (3.0ms)
+Completed 200 OK in 23ms (Views: 16.0ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:13:15 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.3ms)
+Completed 200 OK in 21ms (Views: 18.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (7.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "a restaurant"], ["created_at", 2016-11-16 11:13:15 UTC], ["updated_at", 2016-11-16 11:13:15 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:44 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (20.8ms)
+  Rendered application/_user_header.erb (1.9ms)
+Completed 200 OK in 673ms (Views: 613.0ms | ActiveRecord: 3.6ms)
+  [1m[35m (7.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (24.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:19:44 UTC], ["updated_at", 2016-11-16 11:19:44 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:44 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (5.8ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 67ms (Views: 63.2ms | ActiveRecord: 1.0ms)
+  [1m[35m (5.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:44 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (26.7ms)
+  Rendered application/_user_header.erb (3.8ms)
+Completed 200 OK in 96ms (Views: 83.3ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (27.1ms)
+  Rendered application/_user_header.erb (2.5ms)
+Completed 200 OK in 69ms (Views: 63.8ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"McDonald's", "description"=>""}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (3.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "McDonald's"], ["LIMIT", 1]]
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "McDonald's"], ["description", ""], ["created_at", 2016-11-16 11:19:45 UTC], ["updated_at", 2016-11-16 11:19:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 16ms (ActiveRecord: 6.5ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.6ms)
+  Rendered application/_user_header.erb (4.4ms)
+Completed 200 OK in 40ms (Views: 34.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:19:45 UTC], ["updated_at", 2016-11-16 11:19:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.7ms)
+  Rendered application/_user_header.erb (63.9ms)
+Completed 200 OK in 117ms (Views: 114.5ms | ActiveRecord: 0.5ms)
+Started GET "/restaurants/131" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"131"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 131], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 131]]
+  Rendered restaurants/show.erb within layouts/application (14.5ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 93ms (Views: 35.5ms | ActiveRecord: 3.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.2ms)
+  Rendered application/_user_header.erb (1.7ms)
+Completed 200 OK in 34ms (Views: 31.1ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (7.3ms)
+  Rendered application/_user_header.erb (1.5ms)
+Completed 200 OK in 56ms (Views: 47.0ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:19:45 UTC], ["updated_at", 2016-11-16 11:19:45 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 20ms (ActiveRecord: 2.1ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (3.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (7.0ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 35ms (Views: 23.0ms | ActiveRecord: 3.9ms)
+Started GET "/restaurants/132" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"132"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 132], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 132]]
+  Rendered restaurants/show.erb within layouts/application (2.3ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 34ms (Views: 29.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:19:45 UTC], ["updated_at", 2016-11-16 11:19:45 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (5.5ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 61ms (Views: 56.7ms | ActiveRecord: 0.6ms)
+Started GET "/restaurants/133" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"133"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 133], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 133]]
+  Rendered restaurants/show.erb within layouts/application (7.6ms)
+  Rendered application/_user_header.erb (2.9ms)
+Completed 200 OK in 68ms (Views: 59.4ms | ActiveRecord: 0.9ms)
+Started GET "/restaurants/133/edit" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"133"}
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 133], ["LIMIT", 1]]
+  Rendering restaurants/edit.erb within layouts/application
+  Rendered restaurants/edit.erb within layouts/application (7.0ms)
+  Rendered application/_user_header.erb (1.5ms)
+Completed 200 OK in 68ms (Views: 55.3ms | ActiveRecord: 0.8ms)
+Started PATCH "/restaurants/133" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#update as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"trat", "description"=>"", "rating"=>""}, "commit"=>"Update Restaurant", "id"=>"133"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 133], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 AND ("restaurants"."id" != $2) LIMIT $3[0m  [["name", "trat"], ["id", 133], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "description" = $2, "updated_at" = $3 WHERE "restaurants"."id" = $4[0m  [["name", "trat"], ["description", ""], ["updated_at", 2016-11-16 11:19:45 UTC], ["id", 133]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 17ms (ActiveRecord: 2.9ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:45 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (10.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (6.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (25.7ms)
+  Rendered application/_user_header.erb (9.0ms)
+Completed 200 OK in 101ms (Views: 79.7ms | ActiveRecord: 16.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (25.3ms)
+  Rendered application/_user_header.erb (1.4ms)
+Completed 200 OK in 89ms (Views: 73.9ms | ActiveRecord: 0.9ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (16.1ms)
+  Rendered application/_user_header.erb (1.8ms)
+Completed 200 OK in 51ms (Views: 48.1ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:19:46 UTC], ["updated_at", 2016-11-16 11:19:46 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (14.1ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 81ms (Views: 75.7ms | ActiveRecord: 1.0ms)
+Started GET "/restaurants/134" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"134"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 134], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 134]]
+  Rendered restaurants/show.erb within layouts/application (8.0ms)
+  Rendered application/_user_header.erb (0.6ms)
+Completed 200 OK in 96ms (Views: 79.6ms | ActiveRecord: 1.4ms)
+Started DELETE "/restaurants/134" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"id"=>"134"}
+  [1m[36mRestaurant Load (9.7ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 134], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 134]]
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 134]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 27ms (ActiveRecord: 11.4ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.2ms)
+  Rendered application/_user_header.erb (11.5ms)
+Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (11.5ms)
+  Rendered application/_user_header.erb (1.6ms)
+Completed 200 OK in 57ms (Views: 52.9ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (10.8ms)
+  Rendered application/_user_header.erb (0.7ms)
+Completed 200 OK in 44ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:19:46 UTC], ["updated_at", 2016-11-16 11:19:46 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.8ms)
+  Rendered application/_user_header.erb (0.6ms)
+Completed 200 OK in 45ms (Views: 37.3ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (1.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.0ms)
+  Rendered application/_user_header.erb (3.3ms)
+Completed 200 OK in 31ms (Views: 25.3ms | ActiveRecord: 2.6ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (6.1ms)
+  Rendered application/_user_header.erb (1.8ms)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (2.8ms)
+  Rendered application/_user_header.erb (0.7ms)
+Completed 200 OK in 55ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.9ms)
+  Rendered application/_user_header.erb (1.9ms)
+Completed 200 OK in 25ms (Views: 21.0ms | ActiveRecord: 0.3ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:19:46 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (2.3ms)
+  Rendered application/_user_header.erb (11.7ms)
+Completed 200 OK in 56ms (Views: 54.1ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:47 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:19:47 UTC], ["updated_at", 2016-11-16 11:19:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:19:47 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.5ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 52ms (Views: 49.8ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/136" for 127.0.0.1 at 2016-11-16 11:19:47 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"136"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (3.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 136]]
+  Rendered restaurants/show.erb within layouts/application (7.7ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 32ms (Views: 21.5ms | ActiveRecord: 3.8ms)
+Started GET "/restaurants/136/reviews/new" for 127.0.0.1 at 2016-11-16 11:19:47 +0000
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"136"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+  Rendering reviews/new.erb within layouts/application
+  Rendered reviews/new.erb within layouts/application (6.6ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 40ms (Views: 25.1ms | ActiveRecord: 1.5ms)
+Started POST "/restaurants/136/reviews" for 127.0.0.1 at 2016-11-16 11:19:47 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"comments"=>"Pretty average place. Needs improvement", "rating"=>"2"}, "commit"=>"Review", "restaurant_id"=>"136"}
+  [1m[36mRestaurant Load (2.0ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (7.9ms)[0m  [1m[32mINSERT INTO "reviews" ("comments", "rating", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comments", "Pretty average place. Needs improvement"], ["rating", 2], ["restaurant_id", 136], ["created_at", 2016-11-16 11:19:47 UTC], ["updated_at", 2016-11-16 11:19:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants/136
+Completed 302 Found in 32ms (ActiveRecord: 10.7ms)
+Started GET "/restaurants/136" for 127.0.0.1 at 2016-11-16 11:19:47 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"136"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 136]]
+  Rendered restaurants/show.erb within layouts/application (5.0ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 34ms (Views: 27.8ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:19:47 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.6ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 57ms (Views: 53.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (9.9ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "a restaurant"], ["created_at", 2016-11-16 11:19:47 UTC], ["updated_at", 2016-11-16 11:19:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (3.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:00 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (34.9ms)
+  Rendered application/_user_header.erb (10.2ms)
+Completed 200 OK in 776ms (Views: 715.8ms | ActiveRecord: 2.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:21:01 UTC], ["updated_at", 2016-11-16 11:21:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:01 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.5ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 49ms (Views: 46.5ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:01 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.9ms)
+  Rendered application/_user_header.erb (2.8ms)
+Completed 200 OK in 54ms (Views: 48.5ms | ActiveRecord: 0.5ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:21:01 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (29.3ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 77ms (Views: 63.6ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:01 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"McDonald's", "description"=>""}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "McDonald's"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "McDonald's"], ["description", ""], ["created_at", 2016-11-16 11:21:01 UTC], ["updated_at", 2016-11-16 11:21:01 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 8ms (ActiveRecord: 1.1ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:01 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.6ms)
+  Rendered application/_user_header.erb (1.5ms)
+Completed 200 OK in 33ms (Views: 28.5ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:21:01 UTC], ["updated_at", 2016-11-16 11:21:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:01 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.7ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 159ms (Views: 154.9ms | ActiveRecord: 0.9ms)
+Started GET "/restaurants/140" for 127.0.0.1 at 2016-11-16 11:21:01 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"140"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 140], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (2.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 140]]
+  Rendered restaurants/show.erb within layouts/application (12.0ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 92ms (Views: 39.9ms | ActiveRecord: 4.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.6ms)
+  Rendered application/_user_header.erb (3.8ms)
+Completed 200 OK in 48ms (Views: 40.6ms | ActiveRecord: 0.3ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (5.7ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 64ms (Views: 49.2ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:21:02 UTC], ["updated_at", 2016-11-16 11:21:02 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 6ms (ActiveRecord: 1.2ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.2ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 36ms (Views: 33.3ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/141" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"141"}
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 141], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 141]]
+  Rendered restaurants/show.erb within layouts/application (8.2ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 31ms (Views: 24.8ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:21:02 UTC], ["updated_at", 2016-11-16 11:21:02 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (12.9ms)
+  Rendered application/_user_header.erb (4.3ms)
+Completed 200 OK in 59ms (Views: 55.1ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/142" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"142"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 142], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 142]]
+  Rendered restaurants/show.erb within layouts/application (13.5ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 57ms (Views: 51.1ms | ActiveRecord: 1.3ms)
+Started GET "/restaurants/142/edit" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"142"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 142], ["LIMIT", 1]]
+  Rendering restaurants/edit.erb within layouts/application
+  Rendered restaurants/edit.erb within layouts/application (13.1ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 44ms (Views: 38.3ms | ActiveRecord: 0.4ms)
+Started PATCH "/restaurants/142" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#update as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"trat", "description"=>"", "rating"=>""}, "commit"=>"Update Restaurant", "id"=>"142"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 142], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (3.7ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 AND ("restaurants"."id" != $2) LIMIT $3[0m  [["name", "trat"], ["id", 142], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "description" = $2, "updated_at" = $3 WHERE "restaurants"."id" = $4[0m  [["name", "trat"], ["description", ""], ["updated_at", 2016-11-16 11:21:02 UTC], ["id", 142]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 19ms (ActiveRecord: 4.9ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (12.7ms)
+  Rendered application/_user_header.erb (3.5ms)
+Completed 200 OK in 45ms (Views: 35.0ms | ActiveRecord: 0.9ms)
+  [1m[35m (6.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.7ms)
+  Rendered application/_user_header.erb (2.1ms)
+Completed 200 OK in 46ms (Views: 40.4ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (8.6ms)
+  Rendered application/_user_header.erb (1.6ms)
+Completed 200 OK in 53ms (Views: 42.9ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (1.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:21:02 UTC], ["updated_at", 2016-11-16 11:21:02 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 11ms (ActiveRecord: 2.4ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.6ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 40ms (Views: 37.0ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/143" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"143"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 143], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 143]]
+  Rendered restaurants/show.erb within layouts/application (6.7ms)
+  Rendered application/_user_header.erb (1.9ms)
+Completed 200 OK in 66ms (Views: 58.3ms | ActiveRecord: 0.8ms)
+Started DELETE "/restaurants/143" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"id"=>"143"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 143], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (7.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 143]]
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 143]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 18ms (ActiveRecord: 9.4ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:02 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (11.2ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 43ms (Views: 37.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.8ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 49ms (Views: 39.9ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (8.0ms)
+  Rendered application/_user_header.erb (11.2ms)
+Completed 200 OK in 65ms (Views: 48.5ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:21:03 UTC], ["updated_at", 2016-11-16 11:21:03 UTC]]
+  [1m[35m (5.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 16ms (ActiveRecord: 7.5ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (3.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (9.9ms)
+  Rendered application/_user_header.erb (2.0ms)
+Completed 200 OK in 47ms (Views: 34.5ms | ActiveRecord: 3.9ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.2ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 46ms (Views: 34.3ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (5.3ms)
+  Rendered application/_user_header.erb (1.8ms)
+Completed 200 OK in 42ms (Views: 37.5ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (8.6ms)
+  Rendered application/_user_header.erb (4.5ms)
+Completed 200 OK in 79ms (Views: 45.3ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (13.2ms)
+  Rendered application/_user_header.erb (1.4ms)
+Completed 200 OK in 70ms (Views: 58.4ms | ActiveRecord: 7.6ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (7.5ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 69ms (Views: 65.6ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:21:03 UTC], ["updated_at", 2016-11-16 11:21:03 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 15ms (ActiveRecord: 1.7ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.3ms)
+  Rendered application/_user_header.erb (1.4ms)
+Completed 200 OK in 51ms (Views: 47.4ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/145" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"145"}
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 145], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 145]]
+  Rendered restaurants/show.erb within layouts/application (3.9ms)
+  Rendered application/_user_header.erb (1.8ms)
+Completed 200 OK in 44ms (Views: 32.9ms | ActiveRecord: 1.3ms)
+Started GET "/restaurants/145/reviews/new" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"145"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 145], ["LIMIT", 1]]
+  Rendering reviews/new.erb within layouts/application
+  Rendered reviews/new.erb within layouts/application (6.0ms)
+  Rendered application/_user_header.erb (2.8ms)
+Completed 200 OK in 50ms (Views: 29.8ms | ActiveRecord: 2.8ms)
+Started POST "/restaurants/145/reviews" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"comments"=>"Pretty average place. Needs improvement", "rating"=>"2"}, "commit"=>"Review", "restaurant_id"=>"145"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 145], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (6.9ms)[0m  [1m[32mINSERT INTO "reviews" ("comments", "rating", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comments", "Pretty average place. Needs improvement"], ["rating", 2], ["restaurant_id", 145], ["created_at", 2016-11-16 11:21:03 UTC], ["updated_at", 2016-11-16 11:21:03 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants/145
+Completed 302 Found in 58ms (ActiveRecord: 7.9ms)
+Started GET "/restaurants/145" for 127.0.0.1 at 2016-11-16 11:21:03 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"145"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 145], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 145]]
+  Rendered restaurants/show.erb within layouts/application (3.7ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 48ms (Views: 36.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:21:04 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (11.0ms)
+  Rendered application/_user_header.erb (3.0ms)
+Completed 200 OK in 95ms (Views: 78.1ms | ActiveRecord: 2.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:21:04 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.0ms)
+  Rendered application/_user_header.erb (1.7ms)
+Completed 200 OK in 69ms (Views: 62.0ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "a restaurant"], ["created_at", 2016-11-16 11:21:04 UTC], ["updated_at", 2016-11-16 11:21:04 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:19 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (18.5ms)
+  Rendered application/_user_header.erb (5.5ms)
+Completed 200 OK in 590ms (Views: 546.0ms | ActiveRecord: 2.2ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:24:20 UTC], ["updated_at", 2016-11-16 11:24:20 UTC]]
+  [1m[35m (1.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.7ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 49ms (Views: 45.9ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.3ms)
+  Rendered application/_user_header.erb (12.5ms)
+Completed 200 OK in 67ms (Views: 55.4ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (31.5ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 82ms (Views: 71.7ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"McDonald's", "description"=>""}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "McDonald's"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "McDonald's"], ["description", ""], ["created_at", 2016-11-16 11:24:20 UTC], ["updated_at", 2016-11-16 11:24:20 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 12ms (ActiveRecord: 1.6ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (5.5ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 35ms (Views: 27.6ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:24:20 UTC], ["updated_at", 2016-11-16 11:24:20 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (1.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.8ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 136ms (Views: 123.5ms | ActiveRecord: 4.1ms)
+Started GET "/restaurants/149" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"149"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 149], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 149]]
+  Rendered restaurants/show.erb within layouts/application (6.2ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 83ms (Views: 27.4ms | ActiveRecord: 3.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.5ms)
+  Rendered application/_user_header.erb (1.4ms)
+Completed 200 OK in 86ms (Views: 82.9ms | ActiveRecord: 0.3ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (6.6ms)
+  Rendered application/_user_header.erb (1.4ms)
+Completed 200 OK in 43ms (Views: 38.2ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:24:20 UTC], ["updated_at", 2016-11-16 11:24:20 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:20 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (1.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (10.2ms)
+  Rendered application/_user_header.erb (2.8ms)
+Completed 200 OK in 45ms (Views: 40.5ms | ActiveRecord: 1.5ms)
+Started GET "/restaurants/150" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"150"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 150], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 150]]
+  Rendered restaurants/show.erb within layouts/application (3.6ms)
+  Rendered application/_user_header.erb (1.6ms)
+Completed 200 OK in 80ms (Views: 72.6ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:24:21 UTC], ["updated_at", 2016-11-16 11:24:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (2.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (17.5ms)
+  Rendered application/_user_header.erb (20.5ms)
+Completed 200 OK in 102ms (Views: 86.2ms | ActiveRecord: 6.7ms)
+Started GET "/restaurants/151" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"151"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 151], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 151]]
+  Rendered restaurants/show.erb within layouts/application (7.8ms)
+  Rendered application/_user_header.erb (1.6ms)
+Completed 200 OK in 80ms (Views: 60.1ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/151/edit" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"151"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 151], ["LIMIT", 1]]
+  Rendering restaurants/edit.erb within layouts/application
+  Rendered restaurants/edit.erb within layouts/application (13.1ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 52ms (Views: 38.1ms | ActiveRecord: 0.3ms)
+Started PATCH "/restaurants/151" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#update as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"trat", "description"=>"", "rating"=>""}, "commit"=>"Update Restaurant", "id"=>"151"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 151], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 AND ("restaurants"."id" != $2) LIMIT $3[0m  [["name", "trat"], ["id", 151], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "description" = $2, "updated_at" = $3 WHERE "restaurants"."id" = $4[0m  [["name", "trat"], ["description", ""], ["updated_at", 2016-11-16 11:24:21 UTC], ["id", 151]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 30ms (ActiveRecord: 4.5ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.3ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 40ms (Views: 34.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (23.7ms)
+  Rendered application/_user_header.erb (11.8ms)
+Completed 200 OK in 97ms (Views: 89.6ms | ActiveRecord: 3.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (8.5ms)
+  Rendered application/_user_header.erb (16.7ms)
+Completed 200 OK in 85ms (Views: 77.8ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:24:21 UTC], ["updated_at", 2016-11-16 11:24:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 18ms (ActiveRecord: 1.3ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (1.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.7ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 65ms (Views: 58.0ms | ActiveRecord: 2.1ms)
+Started GET "/restaurants/152" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"152"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 152], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 152]]
+  Rendered restaurants/show.erb within layouts/application (7.0ms)
+  Rendered application/_user_header.erb (1.7ms)
+Completed 200 OK in 42ms (Views: 36.2ms | ActiveRecord: 0.8ms)
+Started DELETE "/restaurants/152" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"id"=>"152"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 152], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 152]]
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 152]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 20ms (ActiveRecord: 2.0ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:21 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.9ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 64ms (Views: 55.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.6ms)
+  Rendered application/_user_header.erb (4.6ms)
+Completed 200 OK in 35ms (Views: 30.1ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (7.7ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 48ms (Views: 40.5ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:24:22 UTC], ["updated_at", 2016-11-16 11:24:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (12.2ms)
+  Rendered application/_user_header.erb (0.7ms)
+Completed 200 OK in 39ms (Views: 31.0ms | ActiveRecord: 2.7ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.2ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 30ms (Views: 27.3ms | ActiveRecord: 1.0ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (4.4ms)
+  Rendered application/_user_header.erb (1.9ms)
+Completed 200 OK in 36ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (5.7ms)
+  Rendered application/_user_header.erb (1.6ms)
+Completed 200 OK in 52ms (Views: 25.8ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.5ms)
+  Rendered application/_user_header.erb (0.6ms)
+Completed 200 OK in 25ms (Views: 21.0ms | ActiveRecord: 0.5ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (38.1ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 69ms (Views: 62.3ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:24:22 UTC], ["updated_at", 2016-11-16 11:24:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 11ms (ActiveRecord: 1.5ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (5.2ms)
+  Rendered application/_user_header.erb (1.4ms)
+Completed 200 OK in 27ms (Views: 20.2ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/154" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"154"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 154], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 154]]
+  Rendered restaurants/show.erb within layouts/application (5.7ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 31ms (Views: 26.1ms | ActiveRecord: 1.4ms)
+Started GET "/restaurants/154/reviews/new" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"154"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 154], ["LIMIT", 1]]
+  Rendering reviews/new.erb within layouts/application
+  Rendered reviews/new.erb within layouts/application (7.2ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 48ms (Views: 29.8ms | ActiveRecord: 4.3ms)
+Started POST "/restaurants/154/reviews" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"comments"=>"Pretty average place. Needs improvement", "rating"=>"2"}, "commit"=>"Review", "restaurant_id"=>"154"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 154], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (9.9ms)[0m  [1m[32mINSERT INTO "reviews" ("comments", "rating", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comments", "Pretty average place. Needs improvement"], ["rating", 2], ["restaurant_id", 154], ["created_at", 2016-11-16 11:24:22 UTC], ["updated_at", 2016-11-16 11:24:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants/154
+Completed 302 Found in 29ms (ActiveRecord: 10.6ms)
+Started GET "/restaurants/154" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"154"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 154], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 154]]
+  Rendered restaurants/show.erb within layouts/application (6.6ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 41ms (Views: 30.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.2ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.8ms)
+  Rendered application/_user_header.erb (1.6ms)
+Completed 200 OK in 57ms (Views: 54.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (9.7ms)
+  Rendered application/_user_header.erb (2.3ms)
+Completed 200 OK in 83ms (Views: 79.0ms | ActiveRecord: 0.7ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-11-16 11:24:22 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (6.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (23.6ms)
+  Rendered application/_user_header.erb (0.6ms)
+Completed 200 OK in 103ms (Views: 67.0ms | ActiveRecord: 8.5ms)
+Started POST "/users" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (19.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$JeFbz4Tj1zG34KGe1.1kjOTIkvT66kUakc6nG3YwUod38KmaeQz/W"], ["created_at", 2016-11-16 11:24:23 UTC], ["updated_at", 2016-11-16 11:24:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-11-16 11:24:23 UTC], ["last_sign_in_at", 2016-11-16 11:24:23 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", 2016-11-16 11:24:23 UTC], ["id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 83ms (ActiveRecord: 24.0ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.4ms)
+  Rendered application/_user_header.erb (0.7ms)
+Completed 200 OK in 37ms (Views: 30.1ms | ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.9ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 25ms (Views: 20.8ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (14.2ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 52ms (Views: 47.5ms | ActiveRecord: 0.6ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.0ms)
+  Rendered application/_user_header.erb (3.9ms)
+Completed 200 OK in 78ms (Views: 71.4ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$fBD1tPCZTRZznIgZC3s5cOE0QDl7oTbHNJ9gfCLjCgWu92vTiV7p2"], ["created_at", 2016-11-16 11:24:23 UTC], ["updated_at", 2016-11-16 11:24:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-11-16 11:24:23 UTC], ["last_sign_in_at", 2016-11-16 11:24:23 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", 2016-11-16 11:24:23 UTC], ["id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 34ms (ActiveRecord: 4.0ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.1ms)
+  Rendered application/_user_header.erb (2.6ms)
+Completed 200 OK in 28ms (Views: 24.9ms | ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:24:23 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.5ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 23ms (Views: 17.8ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "a restaurant"], ["created_at", 2016-11-16 11:24:23 UTC], ["updated_at", 2016-11-16 11:24:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:04 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (63.1ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 935ms (Views: 882.4ms | ActiveRecord: 3.2ms)
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:25:05 UTC], ["updated_at", 2016-11-16 11:25:05 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:05 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.5ms)
+  Rendered application/_user_header.erb (0.6ms)
+Completed 200 OK in 75ms (Views: 63.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:05 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (16.2ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 90ms (Views: 74.7ms | ActiveRecord: 3.2ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (37.5ms)
+  Rendered application/_user_header.erb (2.5ms)
+Completed 200 OK in 81ms (Views: 65.3ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"McDonald's", "description"=>""}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "McDonald's"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "McDonald's"], ["description", ""], ["created_at", 2016-11-16 11:25:06 UTC], ["updated_at", 2016-11-16 11:25:06 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 80ms (ActiveRecord: 1.6ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.6ms)
+  Rendered application/_user_header.erb (0.7ms)
+Completed 200 OK in 39ms (Views: 33.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:25:06 UTC], ["updated_at", 2016-11-16 11:25:06 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (10.4ms)
+  Rendered application/_user_header.erb (10.8ms)
+Completed 200 OK in 63ms (Views: 50.3ms | ActiveRecord: 4.6ms)
+Started GET "/restaurants/158" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"158"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 158], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 158]]
+  Rendered restaurants/show.erb within layouts/application (6.0ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 113ms (Views: 45.6ms | ActiveRecord: 11.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.7ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 65ms (Views: 61.0ms | ActiveRecord: 0.5ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (2.7ms)
+  Rendered application/_user_header.erb (1.6ms)
+Completed 200 OK in 50ms (Views: 46.6ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:25:06 UTC], ["updated_at", 2016-11-16 11:25:06 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 14ms (ActiveRecord: 1.3ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.1ms)
+  Rendered application/_user_header.erb (3.1ms)
+Completed 200 OK in 48ms (Views: 44.6ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/159" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"159"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 159], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 159]]
+  Rendered restaurants/show.erb within layouts/application (8.7ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 51ms (Views: 37.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "Tratoria Populare"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Tratoria Populare"], ["created_at", 2016-11-16 11:25:06 UTC], ["updated_at", 2016-11-16 11:25:06 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (13.4ms)
+  Rendered application/_user_header.erb (14.5ms)
+Completed 200 OK in 82ms (Views: 79.2ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/160" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"160"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 160], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (2.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 160]]
+  Rendered restaurants/show.erb within layouts/application (15.1ms)
+  Rendered application/_user_header.erb (13.3ms)
+Completed 200 OK in 72ms (Views: 59.9ms | ActiveRecord: 2.5ms)
+Started GET "/restaurants/160/edit" for 127.0.0.1 at 2016-11-16 11:25:06 +0000
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"160"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 160], ["LIMIT", 1]]
+  Rendering restaurants/edit.erb within layouts/application
+  Rendered restaurants/edit.erb within layouts/application (20.4ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 39ms (Views: 35.5ms | ActiveRecord: 0.4ms)
+Started PATCH "/restaurants/160" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#update as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"trat", "description"=>"", "rating"=>""}, "commit"=>"Update Restaurant", "id"=>"160"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 160], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 AND ("restaurants"."id" != $2) LIMIT $3[0m  [["name", "trat"], ["id", 160], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "description" = $2, "updated_at" = $3 WHERE "restaurants"."id" = $4[0m  [["name", "trat"], ["description", ""], ["updated_at", 2016-11-16 11:25:07 UTC], ["id", 160]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 17ms (ActiveRecord: 2.7ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.1ms)
+  Rendered application/_user_header.erb (4.0ms)
+Completed 200 OK in 47ms (Views: 44.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.9ms)
+  Rendered application/_user_header.erb (4.6ms)
+Completed 200 OK in 44ms (Views: 41.7ms | ActiveRecord: 0.4ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (3.1ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 57ms (Views: 50.4ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:25:07 UTC], ["updated_at", 2016-11-16 11:25:07 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (9.1ms)
+  Rendered application/_user_header.erb (1.8ms)
+Completed 200 OK in 39ms (Views: 33.9ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/161" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"161"}
+  [1m[36mRestaurant Load (1.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 161], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 161]]
+  Rendered restaurants/show.erb within layouts/application (11.1ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 40ms (Views: 31.4ms | ActiveRecord: 1.9ms)
+Started DELETE "/restaurants/161" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"id"=>"161"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 161], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 161]]
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 161]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 13ms (ActiveRecord: 1.7ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.2ms)
+  Rendered application/_user_header.erb (0.7ms)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (10.6ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 56ms (Views: 53.2ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (3.0ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 32ms (Views: 24.8ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:25:07 UTC], ["updated_at", 2016-11-16 11:25:07 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (1.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.9ms)
+  Rendered application/_user_header.erb (0.6ms)
+Completed 200 OK in 34ms (Views: 29.0ms | ActiveRecord: 2.5ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.3ms)
+  Rendered application/_user_header.erb (4.0ms)
+Completed 200 OK in 37ms (Views: 27.7ms | ActiveRecord: 0.7ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (3.0ms)
+  Rendered application/_user_header.erb (2.7ms)
+Completed 200 OK in 25ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (8.3ms)
+  Rendered application/_user_header.erb (2.1ms)
+Completed 200 OK in 74ms (Views: 32.6ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (1.8ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 36ms (Views: 32.7ms | ActiveRecord: 0.3ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (2.8ms)
+  Rendered application/_user_header.erb (9.3ms)
+Completed 200 OK in 44ms (Views: 32.7ms | ActiveRecord: 0.0ms)
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "restaurant"=>{"name"=>"My restaurant", "description"=>"A great place to eat"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "My restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "My restaurant"], ["description", "A great place to eat"], ["created_at", 2016-11-16 11:25:07 UTC], ["updated_at", 2016-11-16 11:25:07 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms)
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.5ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 50ms (Views: 39.0ms | ActiveRecord: 1.4ms)
+Started GET "/restaurants/163" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"163"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 163], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 163]]
+  Rendered restaurants/show.erb within layouts/application (3.3ms)
+  Rendered application/_user_header.erb (3.3ms)
+Completed 200 OK in 37ms (Views: 31.0ms | ActiveRecord: 0.8ms)
+Started GET "/restaurants/163/reviews/new" for 127.0.0.1 at 2016-11-16 11:25:07 +0000
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"163"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 163], ["LIMIT", 1]]
+  Rendering reviews/new.erb within layouts/application
+  Rendered reviews/new.erb within layouts/application (10.4ms)
+  Rendered application/_user_header.erb (1.3ms)
+Completed 200 OK in 57ms (Views: 27.3ms | ActiveRecord: 1.9ms)
+Started POST "/restaurants/163/reviews" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"comments"=>"Pretty average place. Needs improvement", "rating"=>"2"}, "commit"=>"Review", "restaurant_id"=>"163"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 163], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "reviews" ("comments", "rating", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comments", "Pretty average place. Needs improvement"], ["rating", 2], ["restaurant_id", 163], ["created_at", 2016-11-16 11:25:08 UTC], ["updated_at", 2016-11-16 11:25:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/restaurants/163
+Completed 302 Found in 26ms (ActiveRecord: 1.4ms)
+Started GET "/restaurants/163" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"163"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 163], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 163]]
+  Rendered restaurants/show.erb within layouts/application (2.6ms)
+  Rendered application/_user_header.erb (1.2ms)
+Completed 200 OK in 31ms (Views: 26.6ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (7.6ms)
+  Rendered application/_user_header.erb (0.6ms)
+Completed 200 OK in 63ms (Views: 49.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.2ms)
+  Rendered application/_user_header.erb (2.2ms)
+Completed 200 OK in 67ms (Views: 48.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (14.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (4.6ms)
+  Rendered application/_user_header.erb (0.9ms)
+Completed 200 OK in 50ms (Views: 47.7ms | ActiveRecord: 0.4ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (17.4ms)
+  Rendered application/_user_header.erb (1.1ms)
+Completed 200 OK in 116ms (Views: 62.2ms | ActiveRecord: 2.9ms)
+Started POST "/users" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$DrH.W2toKqo74cv7V.AjeuFR2EuN1J30DSyda9DjRFfiKGZHLdIe6"], ["created_at", 2016-11-16 11:25:08 UTC], ["updated_at", 2016-11-16 11:25:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-11-16 11:25:08 UTC], ["last_sign_in_at", 2016-11-16 11:25:08 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", 2016-11-16 11:25:08 UTC], ["id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 76ms (ActiveRecord: 3.4ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (7.0ms)
+  Rendered application/_user_header.erb (0.7ms)
+Completed 200 OK in 24ms (Views: 20.8ms | ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.1ms)
+  Rendered application/_user_header.erb (0.5ms)
+Completed 200 OK in 23ms (Views: 19.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (1.7ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 34ms (Views: 28.1ms | ActiveRecord: 0.3ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.9ms)
+  Rendered application/_user_header.erb (1.0ms)
+Completed 200 OK in 78ms (Views: 73.7ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$NLQFzUVK0x7isxeQzFqUO.Yy.bfwbgdpCJytkWsHC.cVVBOWtZwoC"], ["created_at", 2016-11-16 11:25:08 UTC], ["updated_at", 2016-11-16 11:25:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-11-16 11:25:08 UTC], ["last_sign_in_at", 2016-11-16 11:25:08 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", 2016-11-16 11:25:08 UTC], ["id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 31ms (ActiveRecord: 2.0ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (5.4ms)
+  Rendered application/_user_header.erb (0.8ms)
+Completed 200 OK in 31ms (Views: 20.8ms | ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2016-11-16 11:25:08 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (2.5ms)
+  Rendered application/_user_header.erb (3.0ms)
+Completed 200 OK in 31ms (Views: 22.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "a restaurant"], ["created_at", 2016-11-16 11:25:09 UTC], ["updated_at", 2016-11-16 11:25:09 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "a restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
