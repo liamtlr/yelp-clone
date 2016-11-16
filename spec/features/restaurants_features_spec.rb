@@ -64,14 +64,6 @@ feature 'restaurants' do
 		end
 	end
 
-	context 'adding rating to restaurant' do
-		scenario 'user adds a new restaurant and description' do
-			add_restaurant_and_return
-			click_link 'My restaurant'
-			expect(page).to have_content "Rating: 5/5"
-		end
-	end
-
 	context 'deleting a restaurant' do
 		scenario 'user deletes a restaurant' do
 			visit_my_restaurant
@@ -84,7 +76,7 @@ feature 'restaurants' do
     scenario 'user adds a restaurant with an existing name' do
       add_restaurant_and_return
       add_restaurant_and_return
-      expect(page).to have_content 'This restaurant already exists'
+      expect(page).to have_content 'Name has already been taken'
     end
 	end
 end

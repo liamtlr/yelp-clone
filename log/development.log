@@ -2887,3 +2887,153 @@ Processing by RestaurantsController#index as HTML
 Completed 200 OK in 152ms (Views: 144.3ms | ActiveRecord: 2.0ms)
 
 
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8692138485699695145);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (29.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateRestaurants (20161114150956)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" serial primary key, "name" character varying, "rating" integer, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(8692138485699695145)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (13.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (168.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "yelp_clone_development"[0m
+  [1m[35m (133.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "yelp_clone_test"[0m
+  [1m[35m (444.1ms)[0m  [1m[35mCREATE DATABASE "yelp_clone_development" ENCODING = 'unicode'[0m
+  [1m[35m (281.5ms)[0m  [1m[35mCREATE DATABASE "yelp_clone_test" ENCODING = 'unicode'[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8692138485699695145);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateRestaurants (20161114150956)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.5ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" serial primary key, "name" character varying, "rating" integer, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (24.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161114150956"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20161115152311)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "comments" text, "rating" integer, "restaurant_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_8173017a90"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_restaurant_id" ON "reviews"  ("restaurant_id")[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161115152311"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (17.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-11-16 09:54:36 UTC], ["updated_at", 2016-11-16 09:54:36 UTC]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8692138485699695145)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (18.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'restaurants'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (5.7ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reviews'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/restaurants" for ::1 at 2016-11-16 09:55:53 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (38.0ms)
+Completed 200 OK in 2638ms (Views: 2553.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/restaurants/new" for ::1 at 2016-11-16 09:56:06 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (28.7ms)
+Completed 200 OK in 220ms (Views: 171.7ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/restaurants" for ::1 at 2016-11-16 09:56:24 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aPa/Sao8sMDOHrB5DmcbnI4gNN513RoLDhEL98XL7V7bUw5dYjqUUxklSHuqKYD5U5Ck+GnxWpxyoSSU9aajCA==", "restaurant"=>{"name"=>"KFC", "description"=>"Chicken heaven", "rating"=>"5"}, "commit"=>"Add Restaurant"}
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRestaurant Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "KFC"], ["LIMIT", 1]]
+  [1m[35mSQL (7.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "rating", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "KFC"], ["rating", 5], ["description", "Chicken heaven"], ["created_at", 2016-11-16 09:56:24 UTC], ["updated_at", 2016-11-16 09:56:24 UTC]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 61ms (ActiveRecord: 16.7ms)
+
+
+Started GET "/restaurants" for ::1 at 2016-11-16 09:56:24 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (5.0ms)
+Completed 200 OK in 321ms (Views: 316.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2016-11-16 09:56:45 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (5.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 1]]
+  Rendered restaurants/show.erb within layouts/application (17.0ms)
+Completed 200 OK in 383ms (Views: 264.0ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/restaurants/1/reviews/new" for ::1 at 2016-11-16 09:56:49 +0000
+Processing by ReviewsController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reviews/new.erb within layouts/application
+  Rendered reviews/new.erb within layouts/application (12.6ms)
+Completed 200 OK in 519ms (Views: 276.8ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/restaurants/1/reviews" for ::1 at 2016-11-16 09:56:57 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xJskxDv4K3nufx+m7NCooTw9HMsxmT6Ea2c+CZBp1PN6wt3Acxr8q5gcjMkOjXHB1fv90T7DNf5ACm3dvpppKQ==", "review"=>{"comments"=>"Not bad but wish it was fresher", "rating"=>"3"}, "commit"=>"Review", "restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (10.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (5.1ms)[0m  [1m[32mINSERT INTO "reviews" ("comments", "rating", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comments", "Not bad but wish it was fresher"], ["rating", 3], ["restaurant_id", 1], ["created_at", 2016-11-16 09:56:57 UTC], ["updated_at", 2016-11-16 09:56:57 UTC]]
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/restaurants/1
+Completed 302 Found in 56ms (ActiveRecord: 23.2ms)
+
+
+Started GET "/restaurants/1" for ::1 at 2016-11-16 09:56:57 +0000
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering restaurants/show.erb within layouts/application
+  [1m[36mReview Load (2.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = $1[0m  [["restaurant_id", 1]]
+  Rendered restaurants/show.erb within layouts/application (13.8ms)
+Completed 200 OK in 242ms (Views: 230.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/restaurants/" for ::1 at 2016-11-16 09:57:10 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (6.1ms)
+Completed 200 OK in 331ms (Views: 325.7ms | ActiveRecord: 1.2ms)
+
+
