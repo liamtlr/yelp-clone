@@ -79,4 +79,12 @@ feature 'restaurants' do
 			expect(page).to have_content 'My restaurant has been deleted'
 		end
 	end
+
+	context 'not allowing the same name' do
+    scenario 'user adds a restaurant with an existing name' do
+      add_restaurant_and_return
+      add_restaurant_and_return
+      expect(page).to have_content 'This restaurant already exists'
+    end
+	end
 end
