@@ -3527,3 +3527,501 @@ Processing by RestaurantsController#index as HTML
 Completed 200 OK in 1623ms (Views: 1533.1ms | ActiveRecord: 8.0ms)
 
 
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8692138485699695145);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (12.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddOmniauthToUsers (20161116150923)
+  [1m[35m (9.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (37.5ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" character varying[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "users" ADD "uid" character varying[0m
+  [1m[35mSQL (34.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161116150923"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8692138485699695145)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'restaurants'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reviews'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8692138485699695145);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8692138485699695145)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'restaurants'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reviews'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for ::1 at 2016-11-16 15:19:09 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (12.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (62.6ms)
+  [1m[36mUser Load (25.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_header.erb (110.7ms)
+Completed 200 OK in 2162ms (Views: 1993.7ms | ActiveRecord: 53.7ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-11-16 15:19:19 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SeHqUJvDaI6eUl4qDjVuoDPgI9fUno+UnmLfCfS7yYX7evub7y42v3gvnzaz6uRhp3JaSzEPxiOYEmPZfpQ4Ug=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 43ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2016-11-16 15:19:19 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (3.3ms)
+  Rendered application/_header.erb (17.5ms)
+Completed 200 OK in 199ms (Views: 193.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:19:24 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (9.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (68.2ms)
+  Rendered application/_header.erb (1.8ms)
+Completed 200 OK in 362ms (Views: 352.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:20:27 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:20:28 +0000
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:21:13 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (38.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (149.8ms)
+  Rendered application/_header.erb (25.3ms)
+Completed 200 OK in 1147ms (Views: 1103.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:21:19 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:21:19 +0000
+Started GET "/" for ::1 at 2016-11-16 15:21:43 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (86.8ms)
+  Rendered application/_header.erb (32.2ms)
+Completed 200 OK in 1277ms (Views: 1162.7ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:21:48 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (159.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (262.4ms)
+  Rendered application/_header.erb (1.7ms)
+Completed 200 OK in 740ms (Views: 670.3ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:21:52 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:21:52 +0000
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:22:47 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (12.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (51.0ms)
+  Rendered application/_header.erb (38.2ms)
+Completed 200 OK in 620ms (Views: 609.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:22:51 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:22:51 +0000
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:23:52 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (10.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (27.0ms)
+  Rendered application/_header.erb (3.8ms)
+Completed 200 OK in 827ms (Views: 821.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:23:56 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:23:56 +0000
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:24:17 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (34.4ms)
+  Rendered application/_header.erb (2.2ms)
+Completed 200 OK in 424ms (Views: 412.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:24:27 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:24:27 +0000
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:25:45 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (31.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (197.7ms)
+  Rendered application/_header.erb (24.5ms)
+Completed 200 OK in 1064ms (Views: 1010.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:25:48 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:25:48 +0000
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:26:20 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.8ms)
+  Rendered application/_header.erb (3.9ms)
+Completed 200 OK in 385ms (Views: 382.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:26:24 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:26:24 +0000
+Started GET "/" for ::1 at 2016-11-16 15:26:52 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (1.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (110.6ms)
+  Rendered application/_header.erb (14.2ms)
+Completed 200 OK in 1760ms (Views: 1681.8ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:27:00 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (123.7ms)
+  Rendered application/_header.erb (4.0ms)
+Completed 200 OK in 713ms (Views: 613.5ms | ActiveRecord: 18.6ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:27:02 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:27:02 +0000
+Started GET "/users/auth/facebook/callback,%20scope:%20'user,public_repo?code=AQDMD6e1Kr3YLPxiXzPfWDRuCKm2NtJkaOo_GJ3flG364nxxEf0JnObpytJA1Ts7AyHmtvd4c9xIHqf3rVEJq--4rD4TexCnP5S9UptpV0y-_TTC1bNVa_b3oTNacGQNOklCcWJ63S8ECP6PDh-wb2nZBVe-z6-ARFTX3EgFQ4kdxFUJRU6FdNUdm53LevRyGjeogCaPIcIRZmj40y8LJSI-N-G1NDKsoitk6yYFDCMpe8EA8yX_qMxQfzzXKZQQ1uDQuc7hZSdrD5xlN71H175optmfkZDAo5rOrY2o1-WcJhPyXxcrUEDRvmKMKbEVHp0&state=a831b3beabd9043746526a57eacea90dcf2a545d1e052083" for ::1 at 2016-11-16 15:27:13 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/users/auth/facebook/callback,%20scope:%20'user,public_repo"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (17.7ms)
+  Rendered collection of /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [34 times] (79.7ms)
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (11.0ms)
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.6ms)
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (462.7ms)
+Started GET "/users/auth/facebook/callback,%20scope:%20'user,public_repo?code=AQDDZxb_UvfziOUEEHJJE4sSBjPRmJDiXwaZVu1GSZt7XS4za6xG-2NAxR1p4vCbwgzRUR8-Fa3X5funsnluzABhHiirPwWpthujt3BEo31-PCMtB4sXsRaaocEXi-QuEiHWOAoSyLgyM3ABbZTb9fYrjwcytB1X8LYaXAw3XTY0BSTXvN-AZ3e85x2UKD9u12N1nOukTfXzt9BF1kOlUED4ppQcrGxuUqfRM_yWpP_TV_wgPwLvbtGwGyCI9imRe7nVDKDYgO_dPOn-FNW2-fMnvZKfuo2Aza2hCmlf234KcQAu41t73LLkUA9sNw_AaTU&state=a831b3beabd9043746526a57eacea90dcf2a545d1e052083" for ::1 at 2016-11-16 15:28:01 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/users/auth/facebook/callback,%20scope:%20'user,public_repo"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (29.4ms)
+  Rendered collection of /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [34 times] (104.5ms)
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.3ms)
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (17.3ms)
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (869.9ms)
+Started GET "/" for ::1 at 2016-11-16 15:28:16 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (13.9ms)
+  Rendered application/_header.erb (6.3ms)
+Completed 200 OK in 536ms (Views: 525.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:28:19 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (32.5ms)
+  Rendered application/_header.erb (1.6ms)
+Completed 200 OK in 301ms (Views: 297.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:28:21 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:28:21 +0000
+Started GET "/users/auth/facebook/callback,%20scope:%20'user,public_repo?code=AQDYCvBdk7-doUQlSbm3eHzyiVUElO2LHJQpu2qOJ57E2QWRxWXYGBnfQnqlWd-K_crJMV_E-cKSwpIWU1tKSoFSTSDxM1WzwCReRJkTVqj3cd1r93OqGDGqDF-DM-F1vW-8A0DjaLWPoJvI-TMgXPFyHb2mDglkMp4TmgBO1y90zalS-QkDuZefOHojcA10vAygpiVLatm5umhSMFc1uccfzxF5wGce2YZxexp0y8v5olwvFaYfR2zJDE0ZsqwXGBNX15jrowjIFcunnpX4EB1-hzvgqFMRHQFXcm19Zg1bTK44igDu4vCKdPsYYEA6qtY&state=f1cd1774c2850bdd96ba9a2254c741af59f748bbc7726025" for ::1 at 2016-11-16 15:28:21 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/users/auth/facebook/callback,%20scope:%20'user,public_repo"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered collection of /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [34 times] (59.2ms)
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.3ms)
+  Rendering /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/Frances/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (412.7ms)
+Started GET "/" for ::1 at 2016-11-16 15:28:56 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (52.3ms)
+Started GET "/" for ::1 at 2016-11-16 15:28:57 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (3.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (10.9ms)
+  Rendered application/_header.erb (8.8ms)
+Completed 200 OK in 168ms (Views: 149.6ms | ActiveRecord: 4.9ms)
+
+
+  Rendered application/_header.erb (1.5ms)
+Completed 200 OK in 981ms (Views: 887.8ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:29:09 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (6.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (116.1ms)
+  Rendered application/_header.erb (2.8ms)
+Completed 200 OK in 601ms (Views: 507.0ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:29:11 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:29:11 +0000
+Started GET "/users/auth/facebook/callback?code=AQCP07CQ03tB3q96rIzRoqGwR3ZCcUFjua9Tv_CZLY5mpYNgZ00_ubCNJnP6IF0y5G1Otfd5cXRLQ1ixvtZj3LY0iiIHF5w_XNcOh9RhTs5dUuNctA6Zvwk_sMSy6QugN0wrMLK88qbbzNHvq_GCc5OCtgj4uXLEkdvpIW80Nbvqi9WrykERe5DiJgNlyTA4D6Z7dHekUFraJSL5_3TAh8MWSX31WjZrBX2jYoCvPtF1KXeWc4PmKzW7x-YEfgz5EIb3pMaJXmnN0QTtBj2Ay9C7V1b8PMqPt4YPINMv1XVH08561QA-Gwl1gdBKgn7HzBM&state=9a35ae2b9a0a1ab33a7ffc173bf61ade594d13bc0e36cc70" for ::1 at 2016-11-16 15:29:11 +0000
+Processing by Devise::OmniauthCallbacksController#failure as HTML
+  Parameters: {"code"=>"AQCP07CQ03tB3q96rIzRoqGwR3ZCcUFjua9Tv_CZLY5mpYNgZ00_ubCNJnP6IF0y5G1Otfd5cXRLQ1ixvtZj3LY0iiIHF5w_XNcOh9RhTs5dUuNctA6Zvwk_sMSy6QugN0wrMLK88qbbzNHvq_GCc5OCtgj4uXLEkdvpIW80Nbvqi9WrykERe5DiJgNlyTA4D6Z7dHekUFraJSL5_3TAh8MWSX31WjZrBX2jYoCvPtF1KXeWc4PmKzW7x-YEfgz5EIb3pMaJXmnN0QTtBj2Ay9C7V1b8PMqPt4YPINMv1XVH08561QA-Gwl1gdBKgn7HzBM", "state"=>"9a35ae2b9a0a1ab33a7ffc173bf61ade594d13bc0e36cc70"}
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:29:12 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (6.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (18.5ms)
+  Rendered application/_header.erb (4.2ms)
+Completed 200 OK in 303ms (Views: 301.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-11-16 15:30:11 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (57.1ms)
+  Rendered application/_header.erb (9.7ms)
+Completed 200 OK in 650ms (Views: 613.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:30:20 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (39.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (93.7ms)
+  Rendered application/_header.erb (4.0ms)
+Completed 200 OK in 388ms (Views: 385.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:30:22 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:30:22 +0000
+Started GET "/users/auth/facebook/callback?code=AQB1P7mlEVKiJNIjNBXTf2GZBGfL0sLArQEuz1GTHJHxvdn-gbMOA5gKJXNrxMzk4ElwtCK50sQm8Ffrex3Yf-efhXWJZQjzVJosswVWZIxCeXH_P8s2sSupHB9NaLG4H9QyRzPo9o3jlwKc4JdygQK6QI4h-RGBGx9pb1srO_y8RdM7FkCKppk4GlRNc-mAtfqnkTZ2IY0JIMBWR8gUR92MFWeBmBiuj2SkoC6wGtpGV_QW0OVlw3oQLlFc46rhyoVpQ5_FHgwZQrhvUs92oFlCGPAEKand_UOEINyzfSkQ3RFGeptP0-Q0NYrsdTNhd5Y&state=9f25c89b66287b6160965055ab8277fa917ca4b296b8c325" for ::1 at 2016-11-16 15:30:22 +0000
+Processing by Devise::OmniauthCallbacksController#failure as HTML
+  Parameters: {"code"=>"AQB1P7mlEVKiJNIjNBXTf2GZBGfL0sLArQEuz1GTHJHxvdn-gbMOA5gKJXNrxMzk4ElwtCK50sQm8Ffrex3Yf-efhXWJZQjzVJosswVWZIxCeXH_P8s2sSupHB9NaLG4H9QyRzPo9o3jlwKc4JdygQK6QI4h-RGBGx9pb1srO_y8RdM7FkCKppk4GlRNc-mAtfqnkTZ2IY0JIMBWR8gUR92MFWeBmBiuj2SkoC6wGtpGV_QW0OVlw3oQLlFc46rhyoVpQ5_FHgwZQrhvUs92oFlCGPAEKand_UOEINyzfSkQ3RFGeptP0-Q0NYrsdTNhd5Y", "state"=>"9f25c89b66287b6160965055ab8277fa917ca4b296b8c325"}
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:30:22 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (14.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (51.3ms)
+  Rendered application/_header.erb (24.6ms)
+Completed 200 OK in 336ms (Views: 334.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-11-16 15:31:23 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (142.3ms)
+  Rendered application/_header.erb (48.4ms)
+Completed 200 OK in 2333ms (Views: 2178.8ms | ActiveRecord: 38.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:31:32 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (188.1ms)
+  Rendered application/_header.erb (27.0ms)
+Completed 200 OK in 587ms (Views: 518.8ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:31:34 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:31:35 +0000
+Started GET "/users/sign_in" for ::1 at 2016-11-16 15:33:00 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (13.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (108.1ms)
+  Rendered application/_header.erb (4.6ms)
+Completed 200 OK in 824ms (Views: 723.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:33:07 +0000
+Started GET "/users/auth/facebook" for ::1 at 2016-11-16 15:33:07 +0000
