@@ -1,3 +1,7 @@
 
+# Don't check in credentials
+config/env.yml
+config/secrets.yml
+
 # Don't check in credentials 
 config/env.yml
