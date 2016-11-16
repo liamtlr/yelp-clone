@@ -2780,3 +2780,110 @@ Processing by RestaurantsController#show as HTML
 Completed 200 OK in 158ms (Views: 133.5ms | ActiveRecord: 2.4ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-11-16 09:22:50 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (15.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /home/tom/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tom/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb (9.6ms)
+Completed 200 OK in 54ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 09:22:59 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (72.5ms)
+Completed 200 OK in 776ms (Views: 708.3ms | ActiveRecord: 40.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-16 09:24:36 +0000
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 09:24:36 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (27.0ms)
+Completed 200 OK in 147ms (Views: 119.7ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 09:24:57 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (34.6ms)
+Completed 200 OK in 117ms (Views: 111.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 09:25:03 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3B3CwaZj0elRrboY5uE+gmWT73OjQ9KLel483IYNJym2kqsOlwrhhDkTxM6+mWqM8pqMKPPR9m7+LUj5ymAdnw==", "restaurant"=>{"name"=>"This Restaurant", "description"=>"sdfsfd", "rating"=>"2"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRestaurant Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "This Restaurant"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 72ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 09:25:03 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (9.9ms)
+Completed 200 OK in 123ms (Views: 115.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 09:25:10 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (5.1ms)
+Completed 200 OK in 154ms (Views: 146.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 09:25:19 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7QBL+9ThvqkhjJhmRDV9pMHadk+jPaJ5SZY8QcOJOZaHjyI05YiOxEky5rAcTSmqVtMVFPOvhpzN5Uhkj+QDIA==", "restaurant"=>{"name"=>"That Restaurant", "description"=>"asdas", "rating"=>"3"}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRestaurant Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "That Restaurant"], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "rating", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "That Restaurant"], ["rating", 3], ["description", "asdas"], ["created_at", 2016-11-16 09:25:19 UTC], ["updated_at", 2016-11-16 09:25:19 UTC]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 19ms (ActiveRecord: 5.6ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 09:25:19 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (9.0ms)
+Completed 200 OK in 110ms (Views: 102.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/restaurants/new" for 127.0.0.1 at 2016-11-16 09:25:22 +0000
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.erb within layouts/application
+  Rendered restaurants/new.erb within layouts/application (4.5ms)
+Completed 200 OK in 95ms (Views: 89.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2016-11-16 09:25:27 +0000
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OdO8sVz4tltxgnhJt/f+gKdvAzxwXbXiqI73CqecgMBTXNV+bZGGNhk8Bp/vj6qOMGZgZyDPkQcs/YMv6/G6dg==", "restaurant"=>{"name"=>"t", "description"=>"sdfs", "rating"=>""}, "commit"=>"Add Restaurant"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRestaurant Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."name" = $1 LIMIT $2[0m  [["name", "t"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 12ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2016-11-16 09:25:27 +0000
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.erb within layouts/application
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  Rendered restaurants/index.erb within layouts/application (8.3ms)
+Completed 200 OK in 152ms (Views: 144.3ms | ActiveRecord: 2.0ms)
+
+
