@@ -7,15 +7,17 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @current_user = current_user
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @restaurant.reviews.create(reviews_params)
+    @output = @restaurant.build_review_with_user_foreign_key(reviews_params, @current_user)
+    puts @output
     redirect_to '/restaurants'
   end
 
 private
 
   def reviews_params
-    params.require(:review).permit(:thoughts, :rating, :restaurant_id, :user_id)
+    params.require(:review).permit(:thoughts, :rating)
   end
 
 end
