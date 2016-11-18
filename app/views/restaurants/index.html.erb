@@ -4,9 +4,14 @@
 
     <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
     <h4><%= restaurant.description %></h4>
-
-    <% unless current_user.has_reviewed?(restaurant) %> <h3><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>  <% end %> <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %> <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></h3>
-
+  <% unless current_user.nil? %>
+    <% if current_user.owns_restaurant?(restaurant) %>
+      <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
+      <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></h3>
+    <% elsif !current_user.has_reviewed?(restaurant) %>
+      <h3><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
+    <% end %>
+  <% end %>
 
     _____________________________________________________
   <% end %>

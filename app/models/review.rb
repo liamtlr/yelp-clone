@@ -6,5 +6,4 @@ class Review < ApplicationRecord
   validates :user_id, length: { minimum: 1 }, allow_nil: true
   validates :restaurant_id, length: { minimum: 1 }, allow_nil: true
 
-
 end

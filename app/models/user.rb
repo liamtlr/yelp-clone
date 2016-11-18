@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_many :restaurants
-  has_many :reviews 
+  has_many :reviews
   has_many :reviewed_restaurants, through: :reviews, source: :restaurant
 
 
@@ -22,6 +22,16 @@ class User < ApplicationRecord
 
   def has_reviewed?(restaurant)
     reviewed_restaurants.include? restaurant
+  end
+
+  def owns_restaurant?(restaurant)
+    self.restaurants.include? restaurant
+  end
+
+  def return_current_user
+    unless current_user.nil?
+      current_user
+    end
   end
 
 end

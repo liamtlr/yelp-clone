@@ -1,13 +1,18 @@
 <h1><%= @restaurant.name %></h1>
 <h2><%= @restaurant.description %></h2>
 
-<h3> Reviews of <%= @restaurant.name %> </h3
+<% if @reviews.none? %>
+  <h3> Be the first to review <%= @restaurant.name %> </h3>
+<% else%>
+  <h3> Reviews of <%= @restaurant.name %> </h3>
 
-<ul>
-  <% @reviews.each do |review |%>
-  <% @reviewer = User.find(review.user_id) %>
-  <li> Reviewed by <%= @reviewer.email %></li>
-  <h4> Rating: <%= review.rating %></h4>
-  <h4> Review: <%= review.thoughts %></h4>
-  <% end %>
-</ul>
+  <h3> Average rating: <%= @restaurant.average_rating %> </h3>
+  <ul>
+    <% @reviews.each do |review |%>
+    <% @reviewer = User.find(review.user_id) %>
+    <li> Reviewed by <%= @reviewer.email %></li>
+    <h4> Rating: <%= review.rating %></h4>
+    <h4> Review: <%= review.thoughts %></h4>
+    <% end %>
+  </ul>
+<% end %>
