@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = @restaurant.build_review_with_user_foreign_key(reviews_params, current_user)
+    @review = @restaurant.reviews.build_review_with_user_foreign_key(reviews_params, current_user)
     if @review.save
       redirect_to restaurants_path
     else
