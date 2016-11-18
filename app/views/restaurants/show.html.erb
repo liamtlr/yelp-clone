@@ -1,2 +1,11 @@
 <p><%= @restaurant.name %></p>
 <p><%= @restaurant.description %></p>
+
+<ul>
+  <% @reviews.each do |review |%>
+  <% @reviewer = User.find(review.user_id) %>
+  <li> Reviewed by <%= @reviewer.email %></li>
+  <h4> Rating: <%= review.rating %></h4>
+  <h4> Review: <%= review.thoughts %></h4>
+  <% end %>
+</ul>

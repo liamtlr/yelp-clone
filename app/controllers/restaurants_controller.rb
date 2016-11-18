@@ -26,6 +26,7 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @reviews = @restaurant.reviews
   end
 
   def edit
