@@ -6,6 +6,15 @@ def sign_in
   click_button('Sign in')
 end
 
+def sign_in_as_diff_user
+  visit('/')
+  click_link('Sign up')
+  fill_in('Email', with: 'him@example.com')
+  fill_in('Password', with: 'mehmehmeh')
+  fill_in('Password confirmation', with: 'mehmehmeh')
+  click_button('Sign up')
+end
+
 def sign_up
   visit('/')
   click_link('Sign up')
