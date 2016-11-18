@@ -7,12 +7,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @current_user = current_user
     @restaurant = Restaurant.find(params[:restaurant_id])
-    puts @current_user.reviewed_restaurants
-    @output = @restaurant.build_review_with_user_foreign_key(reviews_params, @current_user)
-    puts @output
-    redirect_to '/restaurants'
+    @review = @restaurant.build_review_with_user_foreign_key(reviews_params, current_user)
+    if @review.save
+      redirect_to restaurants_path
+    else
+      render :new
+    end
   end
 
 private

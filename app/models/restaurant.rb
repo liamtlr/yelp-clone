@@ -6,7 +6,7 @@ class Restaurant < ApplicationRecord
 
   def build_review_with_user_foreign_key(attributes = {}, user)
     attributes[:user] ||= user
-    reviews.create(attributes)
+    reviews.build(attributes)
   end
 
 end
